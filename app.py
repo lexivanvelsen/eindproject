@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for
 import collections
 
-app = Flask(__name__)
+app = Flask(__name__, template_folder='templates')
 
 # Een eenvoudige database voor het bijhouden van klantgegevens en feedback
 customer_data = {}
@@ -35,28 +35,36 @@ def info():
 
     return render_template('info.html')
 
-@app.route('/bedankt')
+@app.route('/bedankt', methods=['GET', 'POST'])
 def bedankt():
+    if request.method == 'POST':
+        pass  
+
     return render_template('bedankt.html')
 
 @app.route('/form.html', methods=['GET', 'POST'])
 def form():
     if request.method == 'POST':
         # Verwerk het klanttevredenheidsonderzoek
-        name = request.form['name']
+        name = request.form.get("name")
         feedback = {
-            'q1': request.form['q1'],
-            'q2': request.form['q2'],
-            'q3': request.form['q3'],
-            'q4': request.form['q4'],
-            'q5': request.form['q5']
+            "q1": request.form.get("q1", ""),
+            "q2": request.form.get("q2", ""),
+            "q3": request.form.get("q3", ""),
+            "q4": request.form.get("q4", ""),
+            "q5": request.form.get("q5", "")
         }
 
         feedback_data[name].append(feedback)
 
-        return redirect(url_for('index'))
+        return redirect(url_for('einde')) 
 
     return render_template('form.html')
+
+@app.route('/einde')
+def einde():
+    return render_template('einde.html')
+
 
 @app.route('/results')
 def results():
