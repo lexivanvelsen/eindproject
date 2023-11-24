@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Lexi's T-shirt Webshop{% endblock %}</title>
+    <style>
+        
+    body {
+        font-family: Arial, sans-serif;
+        margin: 10px;
+        background-color: #79adcf; /* Blauwe achtergrondkleur */
+        color: #fff; /* Witte tekstkleur */
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* Alles in het midden uitlijnen */
+    }
+    header {
+        background-color: #2980b9; /* Donkerblauwe headerkleur */
+        padding: 10px;
+        color: white;
+        text-align: center;
+        width: 100%; /* Volledige breedte */
+    }
+    nav {
+        margin: 10px 0;
+    }
+    nav a {
+        padding: 10px;
+        margin: 0 10px;
+        text-decoration: none;
+        color: #2c3e50; /* Donkerblauwe linkkleur */
+        font-weight: bold;
+        border-radius: 20px;
+        background-color: #ecf0f1; /* Lichtgrijze achtergrondkleur voor links */
+    }
+    main {
+        margin-top: 20px;
+        width: 40%; /* breedte */
+        text-align: center; /* Alles in het midden uitlijnen */
+    }
+    footer {
+        margin-top: 20px;
+        text-align: center;
+        padding: 10px;
+        background-color: #2980b9; /* Donkerblauwe footerkleur */
+        color: white;
+        width: 100%; /* Volledige breedte */
+    }
+    
+    .form-group {
+        margin-bottom: 15px;
+    }
+    label {
+        display: block;
+        margin-bottom: 5px;
+    }
+    input {
+        padding: 8px;
+        width: 100%;
+        box-sizing: border-box;
+    }
+    input[type="submit"] {
+        background-color: #009688; /* Donkergroene knopkleur */
+        color: white;
+        cursor: pointer;
+    }
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>{% block header %}Lexi's T-shirt Shop{% endblock %}</h1>
+    </header>
+    
+    <nav>
+        <a href="{{ url_for('index') }}">Homepage</a>
+    </nav>
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer>
+        &copy; 2023 Webshop
+    </footer>
+</body>
+</html>
+
