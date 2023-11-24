@@ -1,11 +1,12 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Thank You</title>
-</head>
-<body>
+{% extends "layout.html" %}
+
+{% block title %}Bedankt{% endblock %}
+
+{% block content %}
     <h2>Bedankt voor uw aankoop</h2>
     <p>U kunt nu meedoen aan een klanttevredenheidsonderzoek.</p>
-    <a href="form.html">Klanttevredenheid onderzoek</a>
-</body>
-</html>
+
+    <form action="{{ url_for('form') }}" method="get">
+        <input type="submit" value="Ga door naar onderzoek">
+    </form>
+{% endblock %}
