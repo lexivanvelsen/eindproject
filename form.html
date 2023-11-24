@@ -1,27 +1,57 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Deel uw ervaring met ons!</title>
-</head>
-<body>
-    <h2>Geef hier uw mening</h2>
-    <form action="index.html" method="post">
-        <p>Bent u tevreden over de gebruikersvriendelijkheid van de website?</p>
-        <input type="radio" name="q1" value="ja"> Ja
-        <input type="radio" name="q1" value="nee"> Nee<br>
-        <p>Bent u tevreden over de verzending en levering van de website?</p>
-        <input type="radio" name="q2" value="ja"> Ja
-        <input type="radio" name="q2" value="nee"> Nee<br>
-        <p>Bent u tevreden over de pasvorm van uw T-shirt?</p>
-        <input type="radio" name="q3" value="ja"> Ja
-        <input type="radio" name="q3" value="nee"> Nee<br>
-        <p>Bent u tevreden over uw product in het algemeen?</p>
-        <input type="radio" name="q4" value="ja"> Ja
-        <input type="radio" name="q4" value="nee"> Nee<br>
-        <p>Zou u deze website aanraden aan vrienden of familie?</p>
-        <input type="radio" name="q5" value="ja"> Ja
-        <input type="radio" name="q5" value="nee"> Nee<br>
-        <input type="submit" value="Inleveren">
-    </form>
-</body>
-</html>
+{% extends "layout.html" %}
+{% block title %}Deel uw ervaring met ons!{% endblock %}
+
+{% block content %}
+    <div class="enquete-form" style="width: 800px; margin: auto;">
+        <h2>Geef hier uw mening</h2>
+        <form action="{{ url_for('submit_enquete') }}" method="POST">
+            <input type="hidden" name="color" value="{{ request.args.get('color') }}">
+            
+            <div class=question>
+                <p>Bent u tevreden over de gebruikersvriendelijkheid van de website?</p>
+                <div class="options">
+                    <label><input type="radio" name="q1" value="ja"> Ja </label>
+                    <label><input type="radio" name="q1" value="nee"> Nee</label>
+                </div>
+            </div>
+
+            <div class=question>
+                <p>Bent u tevreden over de verzending en levering van de website?</p>
+                <div class="options">
+                    <label><input type="radio" name="q2" value="ja"> Ja </label>
+                    <label><input type="radio" name="q2" value="nee"> Nee</label> 
+                </div> 
+            </div>
+
+            <div class=question>
+                <p>Bent u tevreden over de pasvorm van uw T-shirt?</p>
+                <div class="options">
+                    <label><input type="radio" name="q3" value="ja"> Ja</label>
+                    <label><input type="radio" name="q3" value="nee"> Nee</label>
+                </div>
+            </div>
+
+            <div class=question>
+                <p>Bent u tevreden over uw product in het algemeen?</p>
+                <div class="options">
+                    <label><input type="radio" name="q4" value="ja"> Ja</label>
+                    <label><input type="radio" name="q4" value="nee"> Nee</label>
+                </div>
+            </div>
+
+            <div class=question>
+                <p>Zou u deze website aanraden aan vrienden of familie?</p>
+                <div class="options">
+                    <label><input type="radio" name="q5" value="ja"> Ja</label>
+                    <label><input type="radio" name="q5" value="nee"> Nee</label>
+                </div>
+            </div>
+
+            <div class="submit-button">
+                <input type="submit" value="Inleveren">
+            </div>
+        </form>
+    </div>
+{% endblock %}
+
+#"color-block question" style="background-color: rgba(25, 15, 163, 0.61); color: rgb(255, 255, 255); width: 800px; height: 200px; display: flex; flex-direction: column; align-items: center;">
