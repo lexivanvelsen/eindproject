@@ -1,18 +1,70 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>T-shirt Shop</title>
-</head>
-<body>
-    <h1>Welkom bij Lexi's T-shirt shop</h1>
-    <p>Kies je favoriete kleur!:</p>
-    <ul>
-        <li><a href="info.html?color=green">Groen</a></li>
-        <li><a href="info.html?color=blue">Blauw</a></li>
-        <li><a href="info.html?color=yellow">Geel</a></li>
-        <li><a href="info.html?color=black">Zwart</a></li>
-        <li><a href="info.html?color=white">Wit</a></li>
-    </ul>
-</body>
-</html>
+{% extends "layout.html" %}
 
+{% block title %}T-shirt Shop{% endblock %}
+
+{% block header %}Welkom bij Lexi's T-shirt shop{% endblock %}
+
+{% block content %}
+    <h2>Kies je favoriete kleur!</h2>
+
+    <form action="{{ url_for('index') }}" method="POST">
+        <label for="kleur">Selecteer een kleur:</label>
+        <div style="display: flex; flex-wrap: wrap; justify-content: space-around; gap: 20px;">
+
+            <div class="color-block" style="background-color: rgba(25, 15, 163, 0.61); color: rgb(255, 255, 255); width: 400px; height: 200px; display: flex; flex-direction: column; align-items: center;">
+                <h3>Groen</h3>
+                <img src="{{ url_for('static', filename='images/groen.jpg') }}" alt="groen" style="width: 150px; height: 150px;">
+                <p>Prijs: €10</p>
+                <a href="{{ url_for('info', color='green') }}"><button>Voeg toe</button></a>
+            </div>
+        
+            <div class="color-block" style="background-color: rgba(25, 15, 163, 0.61); color: rgb(255, 255, 255); width: 400px; height: 200px; display: flex; flex-direction: column; align-items: center;">
+                <h3>Blauw</h3>
+                <img src="{{ url_for('static', filename='images/blauw.jpg') }}" alt="blauw" style="width: 150px; height: 150px;">
+                <p>Prijs: €10</p>
+                <a href="{{ url_for('info', color='blue') }}"><button>Voeg toe</button></a>
+            </div>
+        
+            <div class="color-block" style="background-color: rgba(25, 15, 163, 0.61); color: rgb(255, 255, 255); width: 400px; height: 200px; display: flex; flex-direction: column; align-items: center;">
+                <h3>Geel</h3>
+                <img src="{{ url_for('static', filename='images/geel.jpg') }}" alt="geel" style="width: 150px; height: 150px;">
+                <p>Prijs: €10</p>
+                <a href="{{ url_for('info', color='yellow') }}"><button>Voeg toe</button></a>
+            </div>
+        
+            <div class="color-block" style="background-color: rgba(25, 15, 163, 0.61); color: rgb(255, 255, 255); width: 400px; height: 200px; display: flex; flex-direction: column; align-items: center;">
+                <h3>Zwart</h3>
+                <img src="{{ url_for('static', filename='images/zwart.jpg') }}" alt="zwart" style="width: 150px; height: 150px;">
+                <p>Prijs: €10</p>
+                <a href="{{ url_for('info', color='black') }}"><button>Voeg toe</button></a>
+            </div>
+        
+            <div class="color-block" style="background-color: rgba(25, 15, 163, 0.61); color: rgb(255, 255, 255); width: 400px; height: 200px; display: flex; flex-direction: column; align-items: center;">
+                <h3>Wit</h3>
+                <img src="{{ url_for('static', filename='images/wit.jpg') }}" alt="wit" style="width: 150px; height: 150px;">
+                <p>Prijs: €10</p>
+                <a window.location.href="{{ url_for('info', color='white') }}"><button>Voeg toe</button></a>
+            </div>
+        
+        </div>
+        
+    </form>
+
+   
+
+    {% if show_voorraad %}
+    <p>Voorraad:</p>
+    <table>
+        <tr>
+            <th>Kleur</th>
+            <th>Voorraad</th>
+        </tr>
+        {% for kleur, aantal in voorraad.items() %}
+            <tr>
+                <td>{{ kleur }}</td>
+                <td>{{ aantal }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endif %}
+{% endblock %}
