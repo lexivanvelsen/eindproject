@@ -1,22 +1,37 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>T-shirt Informatie</title>
-</head>
-<body>
+{% extends "layout.html" %}
+
+{% block title %}T-shirt Informatie{% endblock %}
+
+{% block content %}
     <h2>Voer hier uw gegevens in:</h2>
-    <form action="form.html" method="post">
-        <label for="name">Naam:</label>
-        <input type="text" id="name" name="name" required><br>
-        <label for="email">Emailadres:</label>
-        <input type="email" id="email" name="email" required><br>
-        <label for="street">Straatnaam:</label>
-        <input type="text" id="street" name="street" required><br>
-        <label for="postcode">Postcode en huisnummer:</label>
-        <input type="text" id="postcode" name="postcode" required><br>
-        <label for="city">Stad:</label>
-        <input type="text" id="city" name="city" required><br>
-        <input type="submit" value="Doorgaan">
+    <form action="{{ url_for('bedankt') }}" method="post" class="info-form">
+        <div class="form-group">
+            <label for="Name">NAAM</label>
+            <input type="text" id="name" name="Name" required>
+        </div>
+
+        <div class="form-group">
+            <label for="email">EMAILADRES</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+
+        <div class="form-group">
+            <label for="street">STRAATNAAM</label>
+            <input type="text" id="street" name="street" required>
+        </div>
+
+        <div class="form-group">
+            <label for="postcode">POSTCODE EN HUISNUMMER</label>
+            <input type="text" id="postcode" name="postcode" required>
+        </div>
+
+        <div class="form-group">
+            <label for="city">STAD</label>
+            <input type="text" id="city" name="city" required>
+        </div>
+
+        <div class="form-group">
+            <input type="submit" value="Doorgaan">
+        </div>
     </form>
-</body>
-</html>
+{% endblock %}
