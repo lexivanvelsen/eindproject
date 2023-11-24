@@ -1,14 +1,22 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Resultaten</title>
-</head>
-<body>
-    <h2>Results</h2>
-    <p>Bedankt voor uw feedback. U bent :</p>
-    <p>
-        <span id="feedback_message">Loading...</span>
-    </p>
-    <table>
-        <tr>
-            <th>Naam</th
+{% extends "layout.html" %}
+{% block title %}Resultaten{% endblock %}
+
+{% block content %}
+    <h2>Klaar!</h2>
+    <p>Bedankt voor uw feedback, u kunt nu <a href="{{ url_for('index') }}">terugkeren naar de homepagina</a>.</p>
+
+            {% if result %}
+                <p>Overzicht van uw feedback:</p>
+                <ul>
+                    {% for name, data in result.items() %}
+                        <li>
+                            <strong>{{ name }}:</strong>
+                            Kleur: {{ data['color'] }}, Resultaat: {{ data['result'] }}
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                
+            {% endif %}
+        </div>
+    {% endblock %}
